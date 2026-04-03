@@ -1,0 +1,134 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel>=0.41.0"]
+build-backend = "setuptools.build_meta"
+
+# =============================================================================
+# Project metadata
+# =============================================================================
+
+[project]
+name = "aqaa"
+version = "1.0.0"
+description = "AQAA: An Always-On Autonomous Quant AI Agent for Continuous Alpha Discovery, Self-Optimization, and Live Trading"
+readme = "README.md"
+license = {text = "Apache-2.0"}
+requires-python = ">=3.9"
+authors = [
+    {name = "BeeTrade Technologies Inc"},
+]
+keywords = [
+    "quantitative-finance",
+    "alpha-discovery",
+    "autonomous-agent",
+    "backtesting",
+    "portfolio-optimization",
+    "LLM",
+    "machine-learning",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Financial and Insurance Industry",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Office/Business :: Financial :: Investment",
+]
+
+dependencies = [
+    "numpy>=1.24",
+    "scipy>=1.10",
+    "pandas>=1.5",
+    "scikit-learn>=1.2",
+    "pyyaml>=6.0",
+    "matplotlib>=3.7",
+    "seaborn>=0.12",
+    "tqdm>=4.65",
+    "hmmlearn>=0.3",
+]
+
+[project.optional-dependencies]
+llm = [
+    "openai>=1.0",
+    "anthropic>=0.20",
+]
+live = [
+    "ccxt>=4.0",
+    "alpaca-trade-api>=3.0",
+]
+all = [
+    "aqaa[llm,live]",
+]
+dev = [
+    "pytest>=7.4",
+    "pytest-cov>=4.1",
+    "black>=23.7",
+    "ruff>=0.1",
+    "mypy>=1.5",
+]
+
+[project.urls]
+Homepage = "https://github.com/beetrade-tech/aqaa"
+Documentation = "https://github.com/beetrade-tech/aqaa#readme"
+Repository = "https://github.com/beetrade-tech/aqaa"
+Issues = "https://github.com/beetrade-tech/aqaa/issues"
+
+# =============================================================================
+# Tool configuration
+# =============================================================================
+
+[tool.setuptools.packages.find]
+include = ["aqaa*"]
+
+[tool.black]
+line-length = 88
+target-version = ["py39"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py39"
+
+[tool.ruff.lint]
+select = [
+    "E",    # pycodestyle errors
+    "W",    # pycodestyle warnings
+    "F",    # pyflakes
+    "I",    # isort
+    "N",    # pep8-naming
+    "UP",   # pyupgrade
+    "B",    # flake8-bugbear
+    "SIM",  # flake8-simplify
+]
+ignore = [
+    "E501",  # line too long (handled by black)
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["aqaa"]
+
+[tool.mypy]
+python_version = "3.9"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+check_untyped_defs = true
+
+[[tool.mypy.overrides]]
+module = [
+    "hmmlearn.*",
+    "ccxt.*",
+    "alpaca_trade_api.*",
+]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v --tb=short"
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "integration: marks integration tests requiring API keys",
+]

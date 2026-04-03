@@ -1,0 +1,64 @@
+# =============================================================================
+# AQAA - Default Configuration
+# =============================================================================
+# Parameter values match the KDD 2026 paper unless otherwise noted.
+
+hypothesis_engine:
+  tau_nov: 0.75                # Novelty threshold (cosine distance)
+  max_code_iterations: 10      # Max LLM refinement loops per hypothesis
+  source_types:
+    - academic
+    - news
+    - data
+  embedding_model: "text-embedding-3-large"
+  llm_model: "gpt-4o"
+  batch_size: 16
+
+backtester:
+  ic_threshold: 0.03           # Minimum mean IC
+  icir_threshold: 0.8          # Minimum ICIR
+  sharpe_threshold: 1.0        # Minimum annualised Sharpe
+  mdd_threshold: 0.25          # Maximum drawdown (25%)
+  ldt_alpha: 0.01              # Leakage Detection Test significance level
+  buffer_months: 6             # Buffer zone around LLM cutoff (Section 4.3)
+  buffer_months_gpt4: 12       # Extended buffer for GPT-4-class models
+  paper_trade_days: 30         # Forward paper-trading gate (days)
+  llm_cutoff_date: "2024-04-01"  # GPT-4o training cutoff (Section 5.1)
+  lookback_years: 5
+  cost_bps: 5.0
+  slippage_bps: 2.0
+
+portfolio:
+  kelly_fraction: 0.5
+  max_gross_exposure: 1.0
+  max_single_weight: 0.05
+  rho_crowd: 0.65              # Crowding-penalty correlation threshold
+  rebalance_freq: "daily"
+  risk_model: "ledoit_wolf"
+
+execution:
+  default_algo: "TWAP"
+  urgency: "medium"
+  max_participation_rate: 0.05
+  broker: "simulated"
+
+watchdog:
+  theta_min: 0.015             # IC-decay threshold
+  cusum_drift: 0.005           # CUSUM drift parameter
+  review_window_days: 60
+  ucb_c: 1.5                   # UCB exploration constant
+
+market:
+  name: "us_equities"
+  universe: "sp500"
+  cost_bps: 5.0
+  slippage_bps: 2.0
+  frequency: "daily"
+  currency: "USD"
+  trading_hours: "09:30-16:00 ET"
+
+logging:
+  level: "INFO"
+  log_dir: "logs"
+  mlflow_tracking_uri: "sqlite:///mlflow.db"
+  enable_wandb: false

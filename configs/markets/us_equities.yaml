@@ -1,0 +1,28 @@
+# =============================================================================
+# AQAA Market Overlay - US Equities (S&P 500)
+# =============================================================================
+# Layer this on top of default.yaml via load_config_with_overlay().
+
+market:
+  name: "us_equities"
+  universe: "sp500"
+  cost_bps: 5.0
+  slippage_bps: 2.0
+  frequency: "daily"
+  currency: "USD"
+  trading_hours: "09:30-16:00 ET"
+
+backtester:
+  cost_bps: 5.0
+  slippage_bps: 2.0
+  lookback_years: 5
+
+portfolio:
+  max_gross_exposure: 1.0
+  max_single_weight: 0.05
+  rebalance_freq: "daily"
+
+execution:
+  default_algo: "TWAP"
+  urgency: "medium"
+  max_participation_rate: 0.05

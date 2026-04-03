@@ -1,0 +1,89 @@
+# =============================================================================
+# AQAA - .gitignore
+# =============================================================================
+
+# --- Python ------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+*.whl
+pip-wheel-metadata/
+
+# --- Virtual environments ----------------------------------------------------
+.venv/
+venv/
+env/
+ENV/
+
+# --- IDE / Editor ------------------------------------------------------------
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.pydevproject
+
+# --- Testing & Coverage ------------------------------------------------------
+.pytest_cache/
+.coverage
+htmlcov/
+coverage.xml
+*.cover
+
+# --- Linting / Type checking -------------------------------------------------
+.mypy_cache/
+.ruff_cache/
+
+# --- Data files (too large for version control) ------------------------------
+data/raw/
+data/processed/
+data/external/
+*.csv
+*.parquet
+*.h5
+*.hdf5
+*.feather
+*.pkl
+*.pickle
+!configs/**/*.yaml
+
+# --- Model checkpoints -------------------------------------------------------
+checkpoints/
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.joblib
+
+# --- Experiment results (regenerate with `make run-all`) ---------------------
+results/
+mlruns/
+mlflow.db
+wandb/
+
+# --- Logs --------------------------------------------------------------------
+logs/
+*.log
+
+# --- Secrets & API keys (NEVER commit these) ---------------------------------
+.env
+.env.*
+*.key
+*.pem
+secrets/
+credentials/
+
+# --- OS artifacts ------------------------------------------------------------
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# --- Jupyter notebooks (optional, keep .ipynb if used) -----------------------
+.ipynb_checkpoints/

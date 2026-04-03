@@ -1,0 +1,28 @@
+# =============================================================================
+# AQAA Market Overlay - China A-Shares (CSI 500)
+# =============================================================================
+# Layer this on top of default.yaml via load_config_with_overlay().
+
+market:
+  name: "china_ashares"
+  universe: "csi500"
+  cost_bps: 10.0
+  slippage_bps: 5.0
+  frequency: "daily"
+  currency: "CNY"
+  trading_hours: "09:30-11:30,13:00-15:00 CST"
+
+backtester:
+  cost_bps: 10.0
+  slippage_bps: 5.0
+  lookback_years: 5
+
+portfolio:
+  max_gross_exposure: 1.0
+  max_single_weight: 0.03       # Tighter single-name limit for A-shares
+  rebalance_freq: "daily"
+
+execution:
+  default_algo: "TWAP"
+  urgency: "low"
+  max_participation_rate: 0.03  # Lower participation in thinner market

@@ -1,0 +1,34 @@
+# =============================================================================
+# AQAA Market Overlay - Crypto (BTC/ETH)
+# =============================================================================
+# Layer this on top of default.yaml via load_config_with_overlay().
+
+market:
+  name: "crypto"
+  universe: "btc_eth"
+  cost_bps: 8.0
+  slippage_bps: 3.0
+  frequency: "hourly"           # Higher frequency for 24/7 crypto markets
+  currency: "USD"
+  trading_hours: "24/7"
+
+backtester:
+  cost_bps: 8.0
+  slippage_bps: 3.0
+  lookback_years: 3             # Shorter history for crypto
+
+portfolio:
+  max_gross_exposure: 0.8       # Conservative gross exposure for volatile asset class
+  max_single_weight: 0.25       # Concentrated universe allows larger weights
+  rebalance_freq: "hourly"
+  risk_model: "ledoit_wolf"
+
+execution:
+  default_algo: "TWAP"
+  urgency: "high"               # Higher urgency due to fast-moving prices
+  max_participation_rate: 0.10
+  broker: "simulated"
+
+watchdog:
+  theta_min: 0.020              # Slightly higher IC-decay threshold for noisier market
+  review_window_days: 30        # Faster review cycle
