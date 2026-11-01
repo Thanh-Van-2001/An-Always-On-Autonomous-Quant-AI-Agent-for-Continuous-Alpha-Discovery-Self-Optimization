@@ -2,7 +2,7 @@
 
 **Continuous Alpha Discovery, Self-Optimization, and Live Trading**
 
-> Companion code for: *"AQAA: An Always-On Autonomous Quant AI Agent for Continuous Alpha Discovery, Self-Optimization, and Live Trading"* -- KDD 2026.
+> Companion code for: *"AQAA: An Always-On Autonomous Quant AI Agent for Continuous Alpha Discovery, Self-Optimization, and Live Trading"* (preprint, 2026).
 
 ---
 
@@ -246,16 +246,12 @@ aqaa/
 If you use AQAA in your research, please cite our paper:
 
 ```bibtex
-@inproceedings{aqaa2026kdd,
-  title     = {{AQAA}: An Always-On Autonomous Quant {AI} Agent for Continuous
-               Alpha Discovery, Self-Optimization, and Live Trading},
-  author    = {{BeeTrade Technologies Inc}},
-  booktitle = {Proceedings of the 32nd {ACM} {SIGKDD} Conference on Knowledge
-               Discovery and Data Mining ({KDD} '26)},
-  year      = {2026},
-  publisher = {ACM},
-  address   = {New York, NY, USA},
-  doi       = {},
+@misc{aqaa2026,
+  title  = {{AQAA}: An Always-On Autonomous Quant {AI} Agent for Continuous
+            Alpha Discovery, Self-Optimization, and Live Trading},
+  author = {{BeeTrade Technologies Inc}},
+  year   = {2026},
+  note   = {Preprint},
 }
 ```
 
